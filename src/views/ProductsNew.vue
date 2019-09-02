@@ -110,6 +110,7 @@
         },
         methods: {
             save:function(){
+                //teste git
                 //let vm = this;
                 axios.post('http://localhost:3333/products')
                     .then(function (response) {
