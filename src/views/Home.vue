@@ -7,6 +7,7 @@
 
 <script>
 // @ is an alias to /src
+//teste 2
 import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {

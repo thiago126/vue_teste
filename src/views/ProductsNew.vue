@@ -88,6 +88,7 @@
 
 <script>
     import axios from 'axios'
+    //teste 2
 
     export default {
         name: 'ProductsNew',
