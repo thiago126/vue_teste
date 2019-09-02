@@ -19,7 +19,6 @@
 </template>
 
 <script>
-    //teste 2
 </script>
 
 <style>
