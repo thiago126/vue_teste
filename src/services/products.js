@@ -16,3 +16,7 @@ export async function productsStore(data){
 export async function productsEdit(id, data){
     return await axios.put(url('/products/'+id), data);
 }
+
+export async function productsDelete(id){
+    return await axios.delete(url('/products/'+id));
+}
