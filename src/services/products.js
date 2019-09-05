@@ -12,3 +12,7 @@ export async function productsShow(id){
 export async function productsStore(data){
     return await axios.post(url('/products'), data);
 }
+
+export async function productsEdit(id, data){
+    return await axios.put(url('/products/'+id), data);
+}
