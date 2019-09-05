@@ -1,0 +1,16 @@
+{
+  extends: [
+    'plugin:vue/recommended', //nível da regra
+  ],
+  "parserOptions": {
+    "parser": 'babel-eslint',
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "semi": "error"
+  }
+}
