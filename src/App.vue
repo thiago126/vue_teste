@@ -29,6 +29,20 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+
+  export default {
+    name:'App',
+    computed: {
+      ...mapGetters({
+        userAuthenticated: 'auth/userAuthenticated',
+      }),
+    },
+    created() {
+      this.$store.dispatch('auth/teste');
+      console.log(this.userAuthenticated);
+    }
+  };
 </script>
 
 <style>
