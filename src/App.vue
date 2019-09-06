@@ -4,9 +4,10 @@
       <b-navbar
         toggleable="lg"
         type="dark"
-        variant="info"
-      >
-        <b-navbar-brand href="#" to="/products">
+        variant="info">
+        <b-navbar-brand
+          href="#"
+          to="/products">
           Products
         </b-navbar-brand>
 
@@ -14,8 +15,7 @@
 
         <b-collapse
           id="nav-collapse"
-          is-nav
-        >
+          is-nav>
           <b-navbar-nav>
             <b-nav-item to="/products">
               Products list
@@ -29,6 +29,20 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+
+  export default {
+    name:'App',
+    computed: {
+      ...mapGetters({
+        userAuthenticated: 'auth/userAuthenticated',
+      }),
+    },
+    created() {
+      this.$store.dispatch('auth/teste');
+      console.log(this.userAuthenticated);
+    }
+  };
 </script>
 
 <style>

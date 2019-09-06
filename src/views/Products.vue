@@ -5,8 +5,7 @@
         <b-col>
           <b-button
             variant="success"
-            :to="{name: 'ProductsNew'}"
-          >
+            :to="{name: 'ProductsNew'}">
             New product
           </b-button>
         </b-col>
@@ -21,15 +20,13 @@
           v-for="product in products"
           :key="product.id"
           b-col
-          class="p-1"
-        >
+          class="p-1">
           <b-card
             :img-src="product.image"
             img-alt="Image"
             img-top
             tag="article"
-            style="max-width: 20rem;"
-          >
+            style="max-width: 20rem;">
             <b-card-title>
               {{ product.name }}
             </b-card-title>
@@ -40,25 +37,22 @@
               <b-row>
                 <b-col>
                   <b-button
-                          :to="{path:'products/'+product.id}"
-                          variant="primary"
-                  >
+                    :to="{path:'products/'+product.id}"
+                    variant="primary">
                     View
                   </b-button>
                 </b-col>
                 <b-col>
                   <b-button
-                          :to="{name:'ProductsEdit',params:{id:product.id}}"
-                          variant="warning"
-                  >
+                    :to="{name:'ProductsEdit',params:{id:product.id}}"
+                    variant="warning">
                     Edit
                   </b-button>
                 </b-col>
                 <b-col>
                   <b-button
-                          variant="danger"
-                          @click="productDelete(product)"
-                  >
+                    variant="danger"
+                    @click="productDelete(product)">
                     Delete
                   </b-button>
                 </b-col>
@@ -103,9 +97,8 @@
                   confirmButtonText: 'Sim',
                 }).then(response => {
                     if(response.value){
-                      this.products.splice(this.products.indexOf(product), 1);
                       productsDelete(product.id).then(response => {
-                        console.log(response);
+                        this.products.splice(this.products.indexOf(product), 1);
                         Swal.fire({
                           title: 'Sucesso!',
                           text: 'Produto deletado com sucesso!',
