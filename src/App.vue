@@ -4,12 +4,10 @@
       <b-navbar
         toggleable="lg"
         type="dark"
-        variant="info"
-      >
+        variant="info">
         <b-navbar-brand
           href="#"
-          to="/products"
-        >
+          to="/products">
           Products
         </b-navbar-brand>
 
@@ -17,8 +15,7 @@
 
         <b-collapse
           id="nav-collapse"
-          is-nav
-        >
+          is-nav>
           <b-navbar-nav>
             <b-nav-item to="/products">
               Products list

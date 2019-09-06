@@ -1,6 +1,6 @@
 {
   extends: [
-    'plugin:vue/recommended', //nível da regra
+    'plugin:vue/strongly-recommended', //nível da regra
   ],
   "parserOptions": {
     "parser": 'babel-eslint',
@@ -11,6 +11,10 @@
     }
   },
   "rules": {
-    "semi": "error"
+    "semi": "error",
+    "vue/html-closing-bracket-newline": ["error", {
+      "singleline": "never",
+      "multiline": "never"
+    }]
   }
 }

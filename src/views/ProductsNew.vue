@@ -13,14 +13,12 @@
               id="sku"
               label="Product SKU:"
               label-for="sku"
-              description=""
-            >
+              description="">
               <b-container>
                 <b-row>
                   <b-col
                     cols="10"
-                    class="p-0"
-                  >
+                    class="p-0">
                     <b-form-input
                       id="sku"
                       v-model="form.sku"
@@ -28,14 +26,12 @@
                       type="text"
                       required
                       placeholder="Enter product SKU"
-                      name="sku"
-                    />
+                      name="sku" />
                   </b-col>
 
                   <b-col
                     cols="2"
-                    class="p-0"
-                  >
+                    class="p-0">
                     <b-button variant="danger">
                       123
                     </b-button>
@@ -47,8 +43,7 @@
               id="name"
               label="Product name:"
               label-for="name"
-              description=""
-            >
+              description="">
               <b-form-input
                 id="name"
                 v-model="form.name"
@@ -56,15 +51,13 @@
                 type="text"
                 required
                 name="name"
-                placeholder="Enter product name"
-              />
+                placeholder="Enter product name" />
             </b-form-group>
             <b-form-group
               id="description"
               label="Description name:"
               label-for="description"
-              description=""
-            >
+              description="">
               <b-form-textarea
                 id="description"
                 v-model="form.description"
@@ -72,28 +65,24 @@
                 type="text"
                 required
                 name="description"
-                placeholder="Enter product description"
-              />
+                placeholder="Enter product description" />
             </b-form-group>
             <b-form-group
               id="image"
               label="Image URL:"
               label-for="image"
-              description=""
-            >
+              description="">
               <b-form-input
                 id="image"
                 v-model="form.image"
                 type="text"
                 required
-                placeholder="Enter product image url"
-              />
+                placeholder="Enter product image url" />
             </b-form-group>
             <b-form-group>
               <b-button
                 variant="primary"
-                type="submit"
-              >
+                type="submit">
                 Save
               </b-button>
             </b-form-group>
