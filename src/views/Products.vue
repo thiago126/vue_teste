@@ -57,7 +57,7 @@
                 <b-col>
                   <b-button
                           variant="danger"
-                          @click="productDelete"
+                          @click="productDelete(product)"
                   >
                     Delete
                   </b-button>
@@ -72,7 +72,7 @@
 </template>
 
 <script>
-    import { productsIndex } from "../services/products";
+    import { productsIndex, productsDelete } from "../services/products";
 
     export default {
         name: 'Products',
@@ -91,7 +91,7 @@
                       this.products = response.data;
                     });
           },
-          productDelete(){
+          productDelete(product){
               Swal.fire({
                   title: 'Atenção!',
                   text: 'Deseja realmente apagar esse produto?',
@@ -101,7 +101,19 @@
                   cancelButtonColor: '#d33',
                   cancelButtonText: 'Não',
                   confirmButtonText: 'Sim',
-                });
+                }).then(response => {
+                    if(response.value){
+                      this.products.splice(this.products.indexOf(product), 1);
+                      productsDelete(product.id).then(response => {
+                        console.log(response);
+                        Swal.fire({
+                          title: 'Sucesso!',
+                          text: 'Produto deletado com sucesso!',
+                          type: 'Success'
+                        });
+                      });
+                    }
+              });
           },
       }
     };
