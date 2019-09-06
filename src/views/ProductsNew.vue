@@ -19,11 +19,11 @@
                 <b-form-input
                   id="sku"
                   v-model="form.sku"
+                  v-validate="'required|min:4'"
                   type="text"
                   required
                   placeholder="Enter product SKU"
                   name="sku"
-                  v-validate="'required|min:4'"
                 />
               </b-col>
 
@@ -43,10 +43,10 @@
             <b-form-input
               id="name"
               v-model="form.name"
+              v-validate="'required'"
               type="text"
               required
               name="name"
-              v-validate="'required'"
               placeholder="Enter product name"
             />
           </b-form-group>
@@ -59,10 +59,10 @@
             <b-form-textarea
               id="description"
               v-model="form.description"
+              v-validate="'required'"
               type="text"
               required
               name="description"
-              v-validate="'required'"
               placeholder="Enter product description"
             />
           </b-form-group>
