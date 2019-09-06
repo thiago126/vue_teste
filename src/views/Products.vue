@@ -40,24 +40,24 @@
               <b-row>
                 <b-col>
                   <b-button
-                          :to="{path:'products/'+product.id}"
-                          variant="primary"
+                    :to="{path:'products/'+product.id}"
+                    variant="primary"
                   >
                     View
                   </b-button>
                 </b-col>
                 <b-col>
                   <b-button
-                          :to="{name:'ProductsEdit',params:{id:product.id}}"
-                          variant="warning"
+                    :to="{name:'ProductsEdit',params:{id:product.id}}"
+                    variant="warning"
                   >
                     Edit
                   </b-button>
                 </b-col>
                 <b-col>
                   <b-button
-                          variant="danger"
-                          @click="productDelete(product)"
+                    variant="danger"
+                    @click="productDelete(product)"
                   >
                     Delete
                   </b-button>
@@ -103,9 +103,8 @@
                   confirmButtonText: 'Sim',
                 }).then(response => {
                     if(response.value){
-                      this.products.splice(this.products.indexOf(product), 1);
                       productsDelete(product.id).then(response => {
-                        console.log(response);
+                        this.products.splice(this.products.indexOf(product), 1);
                         Swal.fire({
                           title: 'Sucesso!',
                           text: 'Produto deletado com sucesso!',

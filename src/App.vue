@@ -6,7 +6,10 @@
         type="dark"
         variant="info"
       >
-        <b-navbar-brand href="#" to="/products">
+        <b-navbar-brand
+          href="#"
+          to="/products"
+        >
           Products
         </b-navbar-brand>
 
