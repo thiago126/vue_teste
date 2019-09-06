@@ -57,6 +57,7 @@
                 <b-col>
                   <b-button
                           variant="danger"
+                          @click="productDelete"
                   >
                     Delete
                   </b-button>
@@ -80,12 +81,28 @@
                 products: {}
             };
         },
-        created: function () {
-            var vm = this;
+        beforeMount: function () {
+          this.init();
+        },
+      methods:{
+          init(){
             productsIndex('/products')
-                    .then(function (response) {
-                        vm.products = response.data;
+                    .then(response => {
+                      this.products = response.data;
                     });
-        }
+          },
+          productDelete(){
+              Swal.fire({
+                  title: 'Atenção!',
+                  text: 'Deseja realmente apagar esse produto?',
+                  type: 'question',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  cancelButtonText: 'Não',
+                  confirmButtonText: 'Sim',
+                });
+          },
+      }
     };
 </script>

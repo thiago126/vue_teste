@@ -7,7 +7,7 @@
                 </b-col>
             </b-row>
             <b-row>
-                <b-form @submit.prevent="save">
+                <b-form @submit.prevent="editProduct">
                     <b-form-group
                             id="sku"
                             label="Product SKU:"
@@ -95,7 +95,7 @@
 </template>
 
 <script>
-    import { productsShow } from "../services/products";
+    import { productsShow, productsEdit } from "../services/products";
 
     export default {
         name: "ProductsEdit",
@@ -106,13 +106,19 @@
         },
         methods:{
             loadProduct(){
-                console.log('route',this.$route);
                 productsShow(this.$route.params.id).then(response => {
                     this.form = response.data;
                 });
+            },
+            editProduct(){
+                productsEdit(this.$route.params.id, this.form).then(response => {
+                    this.$router.push({name:'products'});
+                }).catch(error => {
+                    console.log('Erro', error);
+                });
             }
         },
-        created() {
+        beforeMount() {
             this.loadProduct();
         }
     };
