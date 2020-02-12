@@ -9,12 +9,12 @@ export default {
     actions:{
         teste({ commit }){
             commit('teste');
-            console.log('auth no Vuex mlllk');
+            // console.log('auth no Vuex mlllk');
         }
     },
     mutations:{
       teste (state){
-          console.log('auth no Vuex mlllk - mutations');
+          // console.log('auth no Vuex mlllk - mutations');
       }
     },
 };

@@ -80,10 +80,7 @@
         },
       methods:{
           init(){
-            productsIndex('/products')
-                    .then(response => {
-                      this.products = response.data;
-                    });
+            this.products = productsIndex();
           },
           productDelete(product){
               Swal.fire({

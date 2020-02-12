@@ -108,16 +108,11 @@
         },
         methods:{
             loadProduct(){
-                productsShow(this.$route.params.id).then(response => {
-                    this.form = response.data;
-                });
+              this.form = productsShow(this.$route.params.id);
             },
             editProduct(){
-                productsEdit(this.$route.params.id, this.form).then(response => {
-                    this.$router.push({name:'products'});
-                }).catch(error => {
-                    console.log('Erro', error);
-                });
+                productsEdit(this.$route.params.id, this.form);
+                this.$router.push({name:'products'});
             }
         }
     };

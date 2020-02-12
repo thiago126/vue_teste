@@ -22,7 +22,6 @@
                     <b-form-input
                       id="sku"
                       v-model="form.sku"
-                      v-validate="'required|min:4'"
                       type="text"
                       required
                       placeholder="Enter product SKU"
@@ -47,7 +46,6 @@
               <b-form-input
                 id="name"
                 v-model="form.name"
-                v-validate="'required'"
                 type="text"
                 required
                 name="name"
@@ -61,7 +59,6 @@
               <b-form-textarea
                 id="description"
                 v-model="form.description"
-                v-validate="'required'"
                 type="text"
                 required
                 name="description"
@@ -103,36 +100,18 @@
         data:function(){
             return {
                 form: {
+                    id: Math.floor((Math.random() * 10000)),
                     name:'',
                     description:'',
                     sku:'',
-                    image:''
+                    image:'https://i0.wp.com/claudianosilva.com.br/wp-content/uploads/2017/11/Helbor-Wide-S%C3%A3o-Paulo.jpg?resize=818%2C417&ssl=1'
                 }
             };
         },
-        created: function () {
-            var vm = this;
-            axios.get('http://localhost:3333/products')
-                .then(function (response) {
-                    vm.products = response.data;
-                });
-        },
         methods: {
             save:function(){
-                //teste git
-                //let vm = this;
-                /*axios.post('http://localhost:3333/products')
-                    .then(function (response) {
-                        console.log(response.data);
-                    });*/
-                this.$validator.validate().then(resp => {
-                  if(resp){
-                    productsStore(this.form).then(response => {
-                      console.log(response);
-                      this.$router.push({name:'products'});
-                    });
-                  }
-                });
+                productsStore(this.form);
+                this.$router.push({name:'products'});
             }
         }
     };

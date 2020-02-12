@@ -1,22 +1,53 @@
-import axios from 'axios';
-import { url } from "./api";
+//productsIndex, productsDelete
 
-export async function productsIndex(){
-    return await axios.get(url(`/products`));
+import axios from "axios";
+import {url} from "./api";
+
+let products = [];
+
+function setStorage () {
+    localStorage.setItem('products', JSON.stringify(products));
 }
 
-export async function productsShow(id){
-    return await axios.get(url(`/products/`));
+function getStorage () {
+    return JSON.parse(localStorage.getItem('products'));
+}
+
+function checkLocalStorage () {
+    const productsStorage = localStorage.getItem('products');
+
+    if (!productsStorage) {
+        setStorage();
+    } else {
+        products = getStorage();
+    }
+}
+
+export function productsIndex () {
+    checkLocalStorage();
+    return products;
+}
+
+export function productsShow (id) {
+    checkLocalStorage();
+    return products.find(product => product.id == id);
 }
 
 export async function productsStore(data){
-    return await axios.post(url(`/products`), data);
+    products = getStorage();
+
+    products.push(data);
+
+    setStorage();
+    return products;
 }
 
-export async function productsEdit(id, data){
-    return await axios.put(url(`/products/${id}`), data);
+export function productsDelete () {
+
 }
 
-export async function productsDelete(id){
-    return await axios.delete(url(`/products/${id}`));
+export function productsEdit (id, data) {
+    let product = products.find(product => product.id == id);
+    Object.assign(product, data);
+    setStorage();
 }
