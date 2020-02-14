@@ -40,7 +40,7 @@
     },
     created() {
       this.$store.dispatch('auth/teste');
-      console.log(this.userAuthenticated);
+      console.log('rs', this.userAuthenticated);
     }
   };
 </script>

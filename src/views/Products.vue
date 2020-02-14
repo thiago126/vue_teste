@@ -19,7 +19,7 @@
         <div
           v-for="product in products"
           :key="product.id"
-          b-col
+          b-colSwal
           class="p-1">
           <b-card
             :img-src="product.image"
@@ -38,6 +38,7 @@
                 <b-col>
                   <b-button
                     :to="{path:'products/'+product.id}"
+                    @click="productBlocked"
                     variant="primary">
                     View
                   </b-button>
@@ -78,12 +79,9 @@
         beforeMount: function () {
           this.init();
         },
-      methods:{
+        methods:{
           init(){
-            productsIndex('/products')
-                    .then(response => {
-                      this.products = response.data;
-                    });
+            this.products = productsIndex();
           },
           productDelete(product){
               Swal.fire({
@@ -97,17 +95,19 @@
                   confirmButtonText: 'Sim',
                 }).then(response => {
                     if(response.value){
-                      productsDelete(product.id).then(response => {
-                        this.products.splice(this.products.indexOf(product), 1);
-                        Swal.fire({
-                          title: 'Sucesso!',
-                          text: 'Produto deletado com sucesso!',
-                          type: 'Success'
-                        });
+                      productsDelete(product.id);
+                      this.init();
+                      Swal.fire({
+                        title: 'Sucesso!',
+                        text: 'Produto deletado com sucesso!',
+                        type: 'success'
                       });
                     }
               });
           },
+          productBlocked(){
+              
+          }
       }
     };
 </script>
