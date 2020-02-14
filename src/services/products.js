@@ -42,8 +42,10 @@ export async function productsStore(data){
     return products;
 }
 
-export function productsDelete () {
-
+export function productsDelete (id) {
+    products = getStorage();
+    products.splice(products.indexOf(products.find(data => data.id == id)),1);
+    setStorage();
 }
 
 export function productsEdit (id, data) {

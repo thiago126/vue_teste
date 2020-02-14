@@ -8,85 +8,7 @@
       </b-row>
       <b-row class="justify-content-center">
         <b-col cols="4">
-          <b-form @submit.prevent="editProduct">
-            <b-form-group
-              id="sku"
-              label="Product SKU:"
-              label-for="sku"
-              description="">
-              <b-container>
-                <b-row>
-                  <b-col
-                    cols="10"
-                    class="p-0">
-                    <b-form-input
-                      id="sku"
-                      v-model="form.sku"
-                      v-validate="'required|min:4'"
-                      type="text"
-                      required
-                      placeholder="Enter product SKU"
-                      name="sku" />
-                  </b-col>
-
-                  <b-col
-                    cols="2"
-                    class="p-0">
-                    <b-button variant="danger">
-                      123
-                    </b-button>
-                  </b-col>
-                </b-row>
-              </b-container>
-            </b-form-group>
-            <b-form-group
-              id="name"
-              label="Product name:"
-              label-for="name"
-              description="">
-              <b-form-input
-                id="name"
-                v-model="form.name"
-                v-validate="'required'"
-                type="text"
-                required
-                name="name"
-                placeholder="Enter product name" />
-            </b-form-group>
-            <b-form-group
-              id="description"
-              label="Description name:"
-              label-for="description"
-              description="">
-              <b-form-textarea
-                id="description"
-                v-model="form.description"
-                v-validate="'required'"
-                type="text"
-                required
-                name="description"
-                placeholder="Enter product description" />
-            </b-form-group>
-            <b-form-group
-              id="image"
-              label="Image URL:"
-              label-for="image"
-              description="">
-              <b-form-input
-                id="image"
-                v-model="form.image"
-                type="text"
-                required
-                placeholder="Enter product image url" />
-            </b-form-group>
-            <b-form-group>
-              <b-button
-                variant="primary"
-                type="submit">
-                Save
-              </b-button>
-            </b-form-group>
-          </b-form>
+          <products-form :prop-form="form" @onSave="editProduct"/>
         </b-col>
       </b-row>
     </b-container>
@@ -96,8 +18,13 @@
 <script>
     import { productsShow, productsEdit } from "../services/products";
 
+    import ProductsForm from '../components/ProductsForm'
+
     export default {
         name: "ProductsEdit",
+        components: {
+          ProductsForm
+        },
         data(){
             return {
                 form:{}
@@ -110,8 +37,8 @@
             loadProduct(){
               this.form = productsShow(this.$route.params.id);
             },
-            editProduct(){
-                productsEdit(this.$route.params.id, this.form);
+            editProduct(form){
+                productsEdit(this.$route.params.id, form);
                 this.$router.push({name:'products'});
             }
         }
